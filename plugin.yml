@@ -1,0 +1,30 @@
+name: TeleSave
+main: uk.co.tggl.pluckerpluck.telesave.TeleSave
+version: 1.0.0
+website: http://www.tggl.co.uk
+author: Pluckerpluck
+description: A plugin that enforced where you teleport into a world
+
+permissions:
+  TeleSave.*:
+    description: Gives access to all TeleSave commands
+    children:
+      TeleSave.admin.*: true
+      MultiInv.mod.ignore: true
+  TeleSave.admin.*:
+    description: Gives you access to all admin commands
+    children:
+      TeleSave.admin.addremove: true
+  TeleSave.admin.addremove:
+    description: Allows the user to add or remove worlds from the active list
+    default: op
+  TeleSave.mod.ignore:
+    description: Permission to add user to global ignore list
+    default: op
+
+commands:
+  telesave:
+    description: TeleSave admin commands
+    usage: |
+           /<command> add <world> - add a world to the active list
+           /<command> remove <world> - remove a world from the active list
