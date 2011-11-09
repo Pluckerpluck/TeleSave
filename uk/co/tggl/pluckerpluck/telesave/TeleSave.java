@@ -41,15 +41,17 @@ public class TeleSave extends JavaPlugin{
 
         // Grab config file here
         File configFile = new File(this.getDataFolder(), "config.yml");
-        try{
-            config = new YamlConfiguration();
-            config.load(configFile);
-        }catch(FileNotFoundException fnfe){
-            TeleSave.log.info("[" + pluginName +"] Config file not found, make one yourself atm");
-        }catch(Exception e){
-            e.printStackTrace();
+        if (configFile.exists()){
+            try{
+                config = new YamlConfiguration();
+                config.load(configFile);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+        }else{
+            TeleSave.log.info("[" + pluginName +"] Config file not found, creating blank file...");
+            createDefaultConfig();
         }
-
 
 
         // Initialize listeners
@@ -88,5 +90,15 @@ public class TeleSave extends JavaPlugin{
             }
         }
         return config;
+    }
+
+    private void createDefaultConfig(){
+        File savesFile = new File(this.getDataFolder(), "config.yml");
+        YamlConfiguration config = new YamlConfiguration();
+        try{
+            config.save(savesFile);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 }
