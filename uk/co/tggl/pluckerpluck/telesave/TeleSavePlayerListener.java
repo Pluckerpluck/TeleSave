@@ -31,9 +31,8 @@ public class TeleSavePlayerListener extends PlayerListener {
         //Get affected worlds and store in an array of lowercase strings
         List tempList = TeleSave.config.getList("worlds");
         if (tempList != null){
-            for (Iterator iterator = tempList.iterator(); iterator.hasNext(); ) {
-                Object next =  iterator.next();
-                if (next instanceof String){
+            for (Object next : tempList) {
+                if (next instanceof String) {
                     worldList.add(((String) next).toLowerCase());
                 }
             }
