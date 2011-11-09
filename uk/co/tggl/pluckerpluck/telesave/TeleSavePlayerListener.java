@@ -14,11 +14,9 @@ import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
- * Created by IntelliJ IDEA.
  * User: Pluckerpluck
  * Date: 08/11/11
  * Time: 18:57
- * To change this template use File | Settings | File Templates.
  */
 public class TeleSavePlayerListener extends PlayerListener {
     ArrayList<String> worldList = new ArrayList<String>();

@@ -14,11 +14,9 @@ import java.io.FileNotFoundException;
 import java.util.logging.Logger;
 
 /**
- * Created by IntelliJ IDEA.
  * User: Pluckerpluck
  * Date: 08/11/11
  * Time: 18:43
- * To change this template use File | Settings | File Templates.
  */
 public class TeleSave extends JavaPlugin{
 
@@ -32,7 +30,6 @@ public class TeleSave extends JavaPlugin{
 
 
     public void onDisable() {
-        //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void onEnable() {
