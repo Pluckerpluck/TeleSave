@@ -1,6 +1,6 @@
 name: TeleSave
 main: uk.co.tggl.pluckerpluck.telesave.TeleSave
-version: 1.0.0
+version: 1.0.1
 website: http://www.tggl.co.uk
 author: Pluckerpluck
 description: A plugin that enforced where you teleport into a world
@@ -10,7 +10,7 @@ permissions:
     description: Gives access to all TeleSave commands
     children:
       TeleSave.admin.*: true
-      MultiInv.mod.ignore: true
+      TeleSave.mod.ignore: true
   TeleSave.admin.*:
     description: Gives you access to all admin commands
     children:

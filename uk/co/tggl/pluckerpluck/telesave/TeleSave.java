@@ -26,7 +26,6 @@ public class TeleSave extends JavaPlugin{
     static final Logger log = Logger.getLogger("Minecraft");
     static String pluginName = "";
     static YamlConfiguration config;
-    static YamlConfiguration savedLocations;
 
     // Register listeners
     TeleSavePlayerListener playerListener;
@@ -54,19 +53,10 @@ public class TeleSave extends JavaPlugin{
             e.printStackTrace();
         }
 
-        // Grab saved locations
-        File savesFile = new File(this.getDataFolder(), "saves.yml");
-        try{
-            savedLocations = new YamlConfiguration();
-            savedLocations.load(savesFile);
-        }catch(FileNotFoundException fnfe){
-            TeleSave.log.info("[" + pluginName +"] Save file not found, one will be created when needed");
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+
 
         // Initialize listeners
-        playerListener = new TeleSavePlayerListener();
+        playerListener = new TeleSavePlayerListener(this);
 
         // Load events
         PluginManager pm = getServer().getPluginManager();
@@ -86,5 +76,20 @@ public class TeleSave extends JavaPlugin{
             e.printStackTrace();
         }
 
+    }
+
+    static YamlConfiguration loadYamlConfig(String name){
+        Plugin plugin = Bukkit.getPluginManager().getPlugin(pluginName);
+        // Grab saved locations
+        File savesFile = new File(plugin.getDataFolder(), name);
+        YamlConfiguration config = new YamlConfiguration();
+        if (savesFile.exists()){
+            try{
+                config.load(savesFile);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return config;
     }
 }
